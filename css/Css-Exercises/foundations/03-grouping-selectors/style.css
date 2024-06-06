@@ -1,0 +1,13 @@
+.Yes,
+.No {
+  font-size: 28px;
+  font-family: Arial, "Times New Roman", sans-serif;
+}
+.Yes {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
+.No {
+  background-color: yellow;
+}
