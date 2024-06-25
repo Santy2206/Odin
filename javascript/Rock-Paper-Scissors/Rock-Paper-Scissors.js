@@ -1,115 +1,131 @@
 
-// - Create The Computerchoice 
-  function getComputerChoice(){
-  let random= Math.floor(Math.random()*(2-0+1));
-  
-  if(random=0){
-   computerwordchoose=("ROCK")
-   return random
-  }
-  else if(random=1){
-    computerwordchoose=("PAPER")
-    return random
- 
-  }
-  else if(random=2){
-    computerwordchoose=("SCISSORS")
-    return random
-  }
-  }
-//  create the humans choice
-  //  Create The User Imput
-  let answer_Lower=prompt("Rock Paper Or Scissors? ") 
-    // Turn it into uppercase to avoid syntax mistakes
-      function answer_Upper(){
-        return answer_Lower.toUpperCase()
-     }
-  // Turn The Humans Choice Into Number 
-    function getHumanChoice(){
-      // Create A Variable That Store The Result 
-        let numeric_answer
+let computerwordchoose
+let humanwordchoose
+let numeric_answer
+let winner
+let random
+let computerScore=0;
+let humanScore=0;
+// Write The Logic To Get The Computer Choice 
+  // Make A Function Named getComputer Choice 
+    function getComputerChoice(){
+      // Write The Code So Will Randomly Return One Of The Options
+        // Create A Variable That Create A Random Number Between 0,1 or 2  
+          random=Math.floor(Math.random()*(2-0+1))
+        // Give The Values To Each Number To The Game Options 
+          if(random==0){
 
-      //Create A Function That Turn The Human Choice To A Number 
+            computerwordchoose="ROCK"
 
-        if(answer_Upper()=="ROCK"){
-        let numeric_answer=0
-        return numeric_answer
-        }
-        else if(answer_Upper()=="PAPER"){
-        let numeric_answer=1
-        return numeric_answer
-        }
-        else if(answer_Upper()=="SCISSORS"){
-          let numeric_answer=2
-          return numeric_answer
-        }
-        else{
-          return "You Write Wrong Try It Again Bro!!"
-        }
+          }
+          else if(random==1){
 
-    }
-// Create The Players Variable Scores 
-  let humanScore=0;
-  let computerScore=0;
-  let winner
-    let a="COMPUTER'S WINS!!"||"HUMAN'S!!"||"EQUAL!!";
+            computerwordchoose="PAPER"
+            
 
 
-// Write the logic to play a single round
-  const HumanSelection=getHumanChoice();
-  const ComputerSelection=getComputerChoice();
-  function playRound(HumanSelection,ComputerSelection){
-
-    // show the ansewer of each player in the console
-    console.log(`YOU CHOOSE ${answer_Upper()}`)
-    console.log(`COMPUTER CHOOSE ${computerwordchoose}`)
+          }
+          else if(random==2){
+            computerwordchoose="SCISSORS"
+            
+            
+          }
+        // Return The Computer Choice 
      
-    // - create a function that calculate the values who wins
+          return random
+          
+      
 
-      if(getComputerChoice()>getHumanChoice()){
-        // add 1 to each score to the winner
-        computerScore= +1;
-        winner="COMPUTER'S WINS!!"
-      }
-      else if (getComputerChoice()<getHumanChoice()){
-        humanScore= +1;
-        winner="HUMAN'S WINS!!"
-      }
-      else if (getComputerChoice()==3&&getHumanChoice()==1){
-        humanScore= +1;
-        winner="HUMAN'S WINS!!"
-      }
-      else if (getComputerChoice()===getHumanChoice()){
-        winner="EQUAL!!"
-      }
-      else {
-        computerScore= +1;
-        winner="COMPUTER'S WINS!!"
-      }
-    // Show the winner and scores 
-    let end=console.log(winner ,`Human's Score It's${humanScore}`,`Computer's Score It's${computerScore}`) 
-  }
+    
 
-  // Write the logic to play the entire game
-    //   Create a new function named playGame.
-   function playGame(){
-
-    if(winner=a){
-      playRound()
-    }
+      
     
     }
+// Write The Logic To Get The Computer Choice
+  // Create A New Function Named getHumanChoice. 
+    function getHumanChoice(){
 
-  //  Move your playRound function and score variables so that they’re declared inside of the new playGame function
+      // Make Return One Of The Valid Options 
+      let answer_Lower=prompt("Rock Paper Or Scissors? ") 
+        //Make Your Function’s HumanChoice Parameter Case-Insensitive
+          function answer_Upper(){
+          return humanwordchoose= answer_Lower.toUpperCase()
+          }
+        //Turn The Human Option To Number 
 
-  // Play 5 rounds by calling playRound 5 times.
+          if(answer_Upper()=="ROCK"){
+          return numeric_answer=0
+          }
+          else if(answer_Upper()=="PAPER"){
+          
+          return numeric_answer=1
+          }
+          else if(answer_Upper()=="SCISSORS"){
+            
+            return numeric_answer=2
+          }
+          else{
+            return "You Write Wrong Try It Again Bro!!"
+          }
+  
+    } 
+// Write The Logic To Play A Single Round
+  // Create A New Function Named playRound.  
+    function playRound(){
+    
+  
+    getComputerChoice()
+    getHumanChoice()
+    //Show The Answer Of Each Player In The Console
+      console.log(`COMPUTER CHOOSE ${computerwordchoose}`)
+      console.log(`YOU CHOOSE ${humanwordchoose}`)
+    //Create A Function That Calculate The Values Who Wins
+      if(random>numeric_answer){
+
+      winner=("COMPUTER'S WINS!!")
+      }
+      else if (random<numeric_answer){
+      winner=("HUMAN'S WINS!!")
+      }
+      else if (random==2&&numeric_answer==0){
+      winner=("HUMAN'S WINS!!")
+      }
+      else if (random===numeric_answer){
+      winner=("EQUAL!!")
+      }
+      else{
+      winner=("COMPUTER'S WINS!!")
+      }
+    //Show The Winner 
+      console.log(winner)
+
+    // Add 1 To Each Score To The Winner
+    if (winner=="COMPUTER'S WINS!!"){
+    computerScore++;
+
+    }
+    else if (winner=="HUMAN'S WINS!!"){
+    humanScore++;
+    }
+
+    // Show The Scores  
+      console.log(`Human's Score It's${humanScore}`,`Computer's Score It's${computerScore}`) 
+
+
+    }
+// Write The Logic To Play All The Game   
+//Create A New Function Named playGame. 
+  function playGame(){
+    //Move your playRound function and score variables so that they’re declared inside of the new playGame function
+    //Play 5 Rounds By Calling PlayRound 5 Times.
+      for (let i=1;i<5;i++){
+        playRound()
+       }
+    
+  }
+ 
   console.log(playGame())
   
 
-
-
-  
-  
-  
 
   
